@@ -68,7 +68,7 @@ int val_precentage(const char *format, int *i)
 	k = *i;
 
 	/* check if no caractere after '%', return false */
-	for (; format[j] == ' '; k++)
+	for (; format[k] == ' '; k++)
 	{
 		if (format[*i + 1] == '\0')
 			return (0);
