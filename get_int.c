@@ -1,71 +1,84 @@
 #include "main.h"
 
 /**
- * _itos - makes an int a string
- * @div: multiple of 10
- * @length: length of number
- * @n: number to convert to string
- * Return: string
- **/
-char *_itos(int div, int length, int n)
+ * print_int - prints an integer
+ * @l: va_list of arguments from _printf
+ * @f: pointer to the struct flags determining
+ * if a flag is passed to _printf
+ * Return: number of char printed
+ */
+int print_int(va_list l, flags_t *f)
 {
-	char *str;
-	int i = 0;
+	int n = va_arg(l, int);
+	int res = count_digit(n);
 
-	str = malloc(sizeof(char) * length + 2);
-	if (str == NULL)
-		return (NULL);
-
-	if (n < 0) /* account for negative sign */
-	{
-		str[0] = '-';
-		i++;
-	}
-	while (n < 0) /* convert each num to string */
-	{
-		str[i] = ((n / div) * -1 + '0'); /* *-1 to handle min int */
-		n = n % div;
-		div /= 10;
-		i++;
-	}
-	while (div >= 1) /* same, this case for positives */
-	{
-		str[i] = ((n / div) + '0');
-		n = n % div;
-		div /= 10;
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
+	if (f->space == 1 && f->plus == 0 && n >= 0)
+		res += _putchar(' ');
+	if (f->plus == 1 && n >= 0)
+		res += _putchar('+');
+	if (n <= 0)
+		res++;
+	print_number(n);
+	return (res);
 }
 
 /**
- * print_d - gets length to put in _itos
- * @list: takes arg
- * Return: integar string
- **/
-char *print_d(va_list list)
+ * print_unsigned - prints an unsigned integer
+ * @l: va_list of arguments from _printf
+ * @f: pointer to the struct flags determining
+ * if a flag is passed to _printf
+ * Return: number of char printed
+ */
+int print_unsigned(va_list l, flags_t *f)
 {
-	int length, div, n, temp;
+	unsigned int u = va_arg(l, unsigned int);
+	char *str = convert(u, 10, 0);
 
-	n = va_arg(list, int);
-	temp = n;
-	length = 0;
-	div = 1;
+	(void)f;
+	return (_puts(str));
+}
 
-	if (n == 0) /* account for 0 having length 1 */
+/**
+ * print_number - helper function that loops through
+ * an integer and prints all its digits
+ * @n: integer to be printed
+ */
+void print_number(int n)
+{
+	unsigned int n1;
+
+	if (n < 0)
 	{
-		length++;
-		return (_itos(div, length, n));
+		_putchar('-');
+		n1 = -n;
 	}
+	else
+		n1 = n;
 
-	while (temp != 0) /* find multiple of ten to divide */
+	if (n1 / 10)
+		print_number(n1 / 10);
+	_putchar((n1 % 10) + '0');
+}
+
+/**
+ * count_digit - returns the number of digits in an integer
+ * for _printf
+ * @i: integer to evaluate
+ * Return: number of digits
+ */
+int count_digit(int i)
+{
+	unsigned int d = 0;
+	unsigned int u;
+
+	if (i < 0)
+		u = i * -1;
+	else
+		u = i;
+	while (u != 0)
 	{
-		length += 1;
-		if (length > 1)
-			div *= 10;
-		temp /= 10;
+		u /= 10;
+		d++;
 	}
-
-	return (_itos(div, length, n));
+	return (d);
 }
