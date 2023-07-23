@@ -6,15 +6,15 @@
 #include <unistd.h>
 
 /**
- * struct format - Struct for formatting data.
- * @cs: Pointer to a character string.
- * @func: func pointer to a function that takes a va_list as an arg.
+ * struct fmt - Struct for formatting data.
+ * @sym: *sym: Pointer to a character string.
+ * @fn: func pointer to a function that takes a va_list as an arg.
  */
-typedef struct format
+typedef struct fmt
 {
-	char *cs;
-	int (*func)(va_list);
-} format_t;
+	char *sym;
+	int (*fn)(va_list);
+} fmt_t;
 
 /**
  * struct flags - A structure for storing the status of different flag options.
@@ -34,50 +34,43 @@ typedef struct flags
 	int h;
 } flags_t;
 
-/**
- * struct width - A structure for the width of the format.
- * @value: Integer that indicates the value.
- * @is_zero: Integer that indicates if the number is zero.
- * @is_astr: Integer that indicates if the number is an astreask.
- **/
-
 typedef struct width
 {
 	int value;
 	int is_zero;
-	int is_astr;
+	int is_astreak;
 } width_t;
 
 /**
  * struct function_t - Holds a function pointer and its base value.
  * @base: The base value for the function.
- * @print_fn: Pointer to the function.
+ * @pfn: Pointer to the function.
  **/
 typedef struct
 {
 	int base;
-	int (*print_fn)(va_list);
+	int (*pfn)(va_list);
 } function_t;
 
 /* main */
 int _printf(const char *format, ...);
 
 /* getters */
-typedef int (*print_fn_t)(va_list);
+typedef int (*pfn_t)(va_list);
 void get_flags(const char *format, flags_t *flags, int *i);
 void get_width(const char *format, width_t *width, int *i);
 void get_length(const char *format, flags_t *flags, int *i);
-print_fn_t get_print(const char *format);
-print_fn_t get_conversion(const char *format, int *i, va_list args,
+pfn_t get_print(const char *format);
+pfn_t get_conversion(const char *format, int *i, va_list args,
 					 flags_t *flags, width_t *width);
 
 /* handlers */
-void par_flags(flags_t *flags, va_list args_flags,
-				 print_fn_t print_fn, int *prd);
-void par_width(width_t *width, va_list args_width,
-				 print_fn_t print_fn, int *prd);
-void par_length(flags_t *flags, va_list args_flags,
-				  print_fn_t print_fn, int *prd);
+void parse_flags(flags_t *flags, va_list args_flags,
+				 pfn_t pfn, int *printed);
+void parse_width(width_t *width, va_list args_width,
+				 pfn_t pfn, int *printed);
+void parse_length(flags_t *flags, va_list args_flags,
+				  pfn_t pfn, int *printed);
 
 /* print_chars */
 int print_char(va_list list);
