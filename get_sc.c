@@ -17,6 +17,7 @@ int printStr(va_list l, flags_t *f)
 		s = "(null)";
 	return (_puts(s));
 }
+
 /**
  * printChar - prints a character
  * @l: va_list arguments from _printf
