@@ -1,8 +1,7 @@
 #include "main.h"
 
 /**
- * print_bigS - Non printable characters
- * (0 < ASCII value < 32 or >= 127) are
+ * printBigS - Non printable characters are
  * printed this way: \x, followed by the ASCII code
  * value in hexadecimal (upper case - always 2 characters)
  * @l: va_list arguments from _printf
@@ -10,7 +9,7 @@
  * if a flag is passed to _printf
  * Return: number of char printed
  */
-int print_bigS(va_list l, flags_t *f)
+int printBigS(va_list l, flags_t *f)
 {
 	int i, count = 0;
 	char *res;
@@ -38,13 +37,13 @@ int print_bigS(va_list l, flags_t *f)
 }
 
 /**
- * print_rev - prints a string in reverse
+ * printRev - prints a string in reverse
  * @l: argument from _printf
  * @f: pointer to the struct flags that determines
  * if a flag is passed to _printf
  * Return: length of the printed string
  */
-int print_rev(va_list l, flags_t *f)
+int printRev(va_list l, flags_t *f)
 {
 	int i = 0, j;
 	char *s = va_arg(l, char *);
@@ -63,13 +62,13 @@ int print_rev(va_list l, flags_t *f)
 }
 
 /**
- * print_rot13 - prints a string using rot13
+ * printRot13 - prints a string using rot13
  * @l: list of arguments from _printf
  * @f: pointer to the struct flags that determines
  * if a flag is passed to _printf
  * Return: length of the printed string
  */
-int print_rot13(va_list l, flags_t *f)
+int printRot13(va_list l, flags_t *f)
 {
 	int i, j;
 	char rot13[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -95,12 +94,12 @@ int print_rot13(va_list l, flags_t *f)
 }
 
 /**
- * print_percent - prints a percent
+ * printPer - prints a percent
  * @l: va_list arguments from _printf
- * @f: pointer to the struct flags in which we turn the flags on
+ * @f: pointer to the struct flags where we turn the flags on
  * Return: number of char printed
  */
-int print_percent(va_list l, flags_t *f)
+int printPer(va_list l, flags_t *f)
 {
 	(void)l;
 	(void)f;
