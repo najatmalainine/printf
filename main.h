@@ -58,7 +58,7 @@ int getFlag(char s, flags_t *f);
 int printStr(va_list l, flags_t *f);
 int printChar(va_list l, flags_t *f);
 
-/* write functions */
+/* print functions */
 int _putchar(char c);
 int _puts(char *str);
 
@@ -72,4 +72,5 @@ int printAdd(va_list l, flags_t *f);
 
 /* print percent */
 int printPer(va_list l, flags_t *f);
+
 #endif
