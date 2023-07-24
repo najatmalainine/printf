@@ -3,7 +3,7 @@
 /**
  * _printf - produces output according to a format
  * @format: format string containing the characters and the specifiers
- * Description: this function will call the get_print() function that will
+ * Description: this function will call the getPrint() function that will
  * determine which printing function to call depending on the conversion
  * specifiers contained into fmt
  * Return: length of the formatted output string
@@ -32,9 +32,9 @@ int _printf(const char *format, ...)
 				count += _putchar('%');
 				continue;
 			}
-			while (get_flag(*p, &flags))
+			while (getFlag(*p, &flags))
 				p++;
-			pfunc = get_print(*p);
+			pfunc = getPrint(*p);
 			count += (pfunc)
 				? pfunc(arguments, &flags)
 				: _printf("%%%c", *p);

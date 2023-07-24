@@ -14,10 +14,6 @@ int printHex(va_list l, flags_t *f)
 	char *str = convert(num, 16, 1);
 	int count = 0;
 
-	num = va_arg(l, unsigned int);
-	*str = convert(num, 16, 1);
-	count = 0;
-
 	if (f->hash == 1 && str[0] != '0')
 		count += _puts("0x");
 	count += _puts(str);
@@ -33,13 +29,9 @@ int printHex(va_list l, flags_t *f)
  */
 int printHex_b(va_list l, flags_t *f)
 {
-	unsigned int num;
-	char *str;
-	int count;
-
-	num = va_arg(l, unsigned int);
-	*str = convert(num, 16, 0);
-	count = 0;
+	unsigned int num = va_arg(l, unsigned int);
+	char *str = convert(num, 16, 0);
+	int count = 0;
 
 	if (f->hash == 1 && str[0] != '0')
 		count += _puts("0X");
@@ -58,11 +50,8 @@ int printHex_b(va_list l, flags_t *f)
  */
 int printBinary(va_list l, flags_t *f)
 {
-	unsigned int num;
-	char *str;
-
-	num = va_arg(l, unsigned int);
-	*str = convert(num, 2, 0);
+	unsigned int num = va_arg(l, unsigned int);
+	char *str = convert(num, 2, 0);
 
 	(void)f;
 	return (_puts(str));
@@ -79,13 +68,10 @@ int printBinary(va_list l, flags_t *f)
  */
 int printOctal(va_list l, flags_t *f)
 {
-	unsigned int num;
-	char *str;
-	int count;
+	unsigned int num = va_arg(l, unsigned int);
+	char *str = convert(num, 8, 0);
+	int count = 0;
 
-	num = va_arg(l, unsigned int);
-	*str = convert(num, 8, 0);
-	count = 0;
 
 	if (f->hash == 1 && str[0] != '0')
 		count += _putchar('0');
