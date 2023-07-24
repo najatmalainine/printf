@@ -58,7 +58,7 @@ int getFlag(char s, flags_t *f);
 int printStr(va_list l, flags_t *f);
 int printChar(va_list l, flags_t *f);
 
-/* print functions */
+/* write functions */
 int _putchar(char c);
 int _puts(char *str);
 
