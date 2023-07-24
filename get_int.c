@@ -59,6 +59,7 @@ void printNum(int n)
 		printNum(n1 / 10);
 	_putchar((n1 % 10) + '0');
 }
+
 /**
  * countDig - returns the number of digits in an integer
  * for _printf
