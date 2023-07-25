@@ -66,7 +66,7 @@ void printNum(int n)
  * @i: integer to evaluate
  * Return: number of digits
  */
-print countDig(int i)
+int countDig(int i)
 {
 	unsigned int d = 0;
 	unsigned int u;
