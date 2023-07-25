@@ -15,7 +15,7 @@ int printAdd(va_list l, flags_t *f)
 	register int count;
 
 	p = va_arg(l, unsigned long int);
-	
+	count = 0	
 	(void)f;
 
 	if (!p)
