@@ -25,7 +25,7 @@ int (*getPrint(char s))(va_list, flags_t *)
 		{'p', printAdd},
 		{'%', printPer}
 		};
-	print flags = 14;
+	int flags = 14;
 
 	register int i;
 
