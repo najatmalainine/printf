@@ -19,10 +19,7 @@ int printHex(va_list l, flags_t *f)
 	count += _puts(str);
 	return (count);
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> c94b4b7f5320286d86638765538c9c967a127961
 /**
  * printHex_b - prints a number in hexadecimal base in uppercase
  * @l: va_list arguments from _printf
