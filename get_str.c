@@ -99,7 +99,7 @@ int printRot13(va_list l, flags_t *f)
  * @f: pointer to the struct flags where we turn the flags on
  * Return: number of char printed
  */
-print printPer(va_list l, flags_t *f)
+int printPer(va_list l, flags_t *f)
 {
 	(void)l;
 	(void)f;
