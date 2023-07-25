@@ -32,6 +32,10 @@ int _printf(const char *format, ...)
 				count += _putchar('%');
 				continue;
 			}
+			while (getFlag(*p, &flags))
+				p++;
+			pfunc = getPrint(*p);
+			count += (pfunc)
 	} else
 			count += _putchar(*p);
 	}
