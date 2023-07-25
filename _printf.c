@@ -13,12 +13,7 @@ int _printf(const char *format, ...)
 	int (*pfunc)(va_list, flags_t *);
 	const char *p;
 	va_list arguments;
-<<<<<<< HEAD
 	flags_t flags = {0, 0, 0};
-=======
-	flags_t flags; 
-	flags = {0, 0, 0};
->>>>>>> c94b4b7f5320286d86638765538c9c967a127961
 
 	register int count = 0;
 
@@ -41,15 +36,9 @@ int _printf(const char *format, ...)
 				p++;
 			pfunc = getPrint(*p);
 			count += (pfunc)
-<<<<<<< HEAD
 				? pfunc(arguments, &flags)
 				: _printf("%%%c", *p);
 		} else
-=======
-			? pfunc(arguments, &flags)
-			: _printf("%%%c", *p);
-	} else
->>>>>>> c94b4b7f5320286d86638765538c9c967a127961
 			count += _putchar(*p);
 	}
 	_putchar(-1);
